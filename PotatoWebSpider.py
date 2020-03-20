@@ -2,7 +2,7 @@ import requests
 import re
 import json
 from bs4 import BeautifulSoup
-import os
+import datetime
 
 def readFileLine(place):
 	with open(place, encoding="utf-8") as f:
@@ -22,50 +22,63 @@ def writeFileA(place,data):
 	filehandle.close()
 
 def main():
-	fileData = readFileLine("a.posp")
+	fileData = readFileLine("test.posp")
 
 	saveFileName = "none"
 	html = "none"
 	url = "none"
 	result = "none"
 
+	err = [0,]
+
 	for root in fileData:
 		key = re.search(r"^[a-z,A-z]+",root).group(0)
 		root = root.strip(key)
 
+# 标题----------------------------------------------------------------------
+
 		if key == "title":
-			data = root.strip("=")
-			print(data)
+			root = root.strip("=").strip("\n")
+			root = "\n" + root + "\n"
+			print(root)
+
+# 文件处理------------------------------------------------------------------
 
 		elif key == "file":
-			root = .strip("&")
+			root = root.strip("&")
 			key = re.search(r"^[a-z,A-z]+",root).group(0)
-			root = key.strip(key)
+			root = root.strip(key).strip("\n").strip("=")
 
 			if key == "new":
 				writeFileN(root,"")
 				saveFileName = root
 
-			elif key == "writeWorld":
-				if save == "none":
-					print("!!!文件还未创建，不可写入!!!")
-
+			elif key == "writeWord":
+				if saveFileName == "none":
+					print("!!!编译错误：文件还未创建，不可写入!!!")
+					err = []
 				else:
 					writeFileA(saveFileName,root)
 
-			elif key == "value":
+			elif key == "writeValue":
 				if root == "time":
+					today = datetime.date.today()
+					today = str(today)
 
+					today = today + "\n"
 
+# 爬虫核心处理---------------------------------------------------------------
 
 		elif key == "url":
-			root = .strip("&")
+			root = root.strip("&")
 			key = re.search(r"^[a-z,A-z]+",root).group(0)
-			root = key.strip(key)
+			root = root.strip(key).strip("=").strip("\n")
 
-			if key = "get":
-				url = root.strip("=")
+			if key == "get":
+				url = root
 				
+				print(url)
+
 				try:		
 					send_headers = {
 					"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36",
@@ -76,14 +89,14 @@ def main():
 					r = requests.get(url,send_headers)
 					r.raise_for_status()
 					r.encoding = r.apparent_encoding
-					r = r.text
+					html = r.text
 					print("##已完成抓取##\n")
-    			except:
+				except:
 					print("##抓取错误##\n")
-					r = "Error"
+					html = "Error"
 
-			elif key == "save":
+			# elif key == "save":
 
-
-	
+	input("\n回车退出")
+		
 main()
