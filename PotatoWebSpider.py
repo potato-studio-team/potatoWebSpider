@@ -37,11 +37,12 @@ def writeFileA(place,data):
 	filehandle.write(data)
 	filehandle.close()
 
+
 def main():
-	fileData = readFileLine("test.posp")
+	fileData = readFileLine(input("请输入子雨爬虫配置文件XXX.posp位置\n>>>"))
 
 	saveFileName = "none"
-	html = "none"
+	textWeb = "none"
 	url = "none"
 	result = "none"
 	htmlHeaders = "none"
@@ -55,7 +56,6 @@ def main():
 		if key == "title":
 			root = root.strip("=").strip("\n")
 			root = "\n" + root + "\n"
-			print(root)
 
 # 文件处理------------------------------------------------------------------
 
@@ -74,9 +74,11 @@ def main():
 					break
 
 				else:
+					root = root + "\n"
 					writeFileA(saveFileName,root)
 
 			elif key == "writeValue":
+				# 错误分析
 				if root == "time":
 					if saveFileName == "none":
 						print("!!!编译错误：文件还未创建，不可写入!!!")
@@ -88,9 +90,11 @@ def main():
 	
 						today = today + "\n"
 						writeFileA("saveFileName",today)
+						print("##时间信息已写入##")
 
 				# 写入访问头部信息
 				if root == "headers":
+					# 错误分析
 					if saveFileName == "none":
 						print("!!!编译错误：文件还未创建，不可写入!!!")
 						break
@@ -100,28 +104,34 @@ def main():
 						break
 
 					else:
-						htmlHeaders = str(htmlHeaders) + "\n"
-						print(htmlHeaders)
-						writeFileA("saveFileName",htmlHeaders)
+						headers = str(htmlHeaders) + "\n"
+						writeFileA(saveFileName,headers)
+						print("##头部信息已写入##")
 
 				# 直接写入html
-				elif root == "html":
-					print("ok")
+				if root == "textWeb":
+					# 错误分析
 					if saveFileName == "none":
 						print("!!!编译错误：文件还未创建，不可写入!!!")
 						break
-					elif saveFileName == "none":
-						print("!!!编译错误：文件还未创建，不可写入!!!")
+
+					elif textWeb == "none":
+						print("!!!编译错误：没有抓取，不可写入!!!")
 						break
 
 					else:
-						html = str(html) + "\n"
-						writeFileA("saveFileName",html)
+						html = "\n本次爬取的网站内容如下\n" + str(textWeb) + "\n"
+						writeFileA(saveFileName,textWeb)
+						print("##网站抓取内容信息已写入##")
 
 				# 写入处理结果
-				elif root == "result":
+				if root == "result":
 					if saveFileName == "none":
 						print("!!!编译错误：文件还未创建，不可写入!!!")
+						break
+
+					elif result == "none":
+						print("!!!编译错误：没有信息被处理，不可写入!!!")
 						break
 
 					else:
@@ -147,9 +157,8 @@ def main():
 				else:
 					print("##抓取成功##\n")
 					htmlHeaders = spiderResult.headers
-					html = spiderResult.text
+					textWeb = spiderResult.text
 
-			# elif key == "save":
 
 	input("\n回车退出")
 		
