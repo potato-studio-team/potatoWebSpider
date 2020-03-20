@@ -1,4 +1,6 @@
 title=test
 url&get=http://www.potatost.xyz
 file&new=a.txt
-file&writeWord=hahaha
+file&writeWord=lalala
+file&writeValue=headers
+file&writeValue=html
