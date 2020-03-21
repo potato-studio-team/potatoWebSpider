@@ -24,7 +24,8 @@ def spiderRoot(url):
 def readFileLine(place):
 	if os.path.exists(place):
 		with open(place, encoding="utf-8") as f:
-		content = f.readlines()
+			content = f.readlines()
+		return content
 
 	else:
 		print("!!!启动错误：配置文件不存在!!!\n")
@@ -59,7 +60,8 @@ def spiderMain(fileData):
 			break
 
 # 标题----------------------------------------------------------------------
-
+	
+		print(key)
 		if key == "title":
 			root = root.strip("=").strip("\n")
 			root = "\n" + root + "\n"
@@ -86,7 +88,7 @@ def spiderMain(fileData):
 
 			elif key == "writeValue":
 				if root == "time":
-					if saveFileName == "none"
+					if saveFileName == "none":
 						print("!!!编译错误：文件还未创建，不可写入!!!\n")
 						break
 
@@ -170,25 +172,38 @@ def spiderMain(fileData):
 					htmlHeaders = spiderResult.headers
 					textWeb = spiderResult.text
 
-		# 代码存在性检验
-		else:
-			print("!!!语法错误：此代码不存在!!!\n")
-			break
+			# 代码存在性检验
+			else:
+				print("!!!语法错误：此代码不存在!!!\n")
+				break
 
-	# 代码存在性检验
-	else:
-		print("!!!语法错误：此代码不存在!!!\n")
-		break
+		# 代码存在性检验
+		# else:
+		# 	print("!!!语法错误：此代码不存在!!!\n")
+		# 	break
 
 def main():
-	while(ture):
+	while(1):
 		print("请输入想要执行的操作\n")
 		print("操作如下:\n")
 		print("执行子雨爬虫配置文件----go\n")
 		print("通过交互式测试代码-----dos\n")
 		print("通过交互式编写代码----code\n")
-		fileData = readFileLine(input("请输入子雨爬虫配置文件XXX.posp位置\n>>>"))
-		spiderMain(fileData)	
+		check = input(">>>")
 
+		if check == "go":
+			fileData = readFileLine(input("请输入子雨爬虫配置文件XXX.posp位置\n>>>"))
+			spiderMain(fileData)	
+
+		elif check == "dos":
+			print(1)
+
+		elif check == "code":
+			print(1)
+
+		else:
+			print("\n请输入正确的操作代码")
+			break
+		
 	input("\n回车退出")		
 main()
