@@ -85,9 +85,8 @@ def spiderMain(fileData):
 					writeFileA(saveFileName,root)
 
 			elif key == "writeValue":
-				# 错误分析
 				if root == "time":
-					if saveFileName == "none":
+					if saveFileName == "none"
 						print("!!!编译错误：文件还未创建，不可写入!!!\n")
 						break
 
@@ -144,6 +143,11 @@ def spiderMain(fileData):
 					else:
 						writeFileA("saveFileName",result)
 
+				# 参数存在性判断
+				else:
+					print("!!!语法错误：此参数不存在!!!\n")
+					break
+
 # 爬虫核心处理---------------------------------------------------------------
 
 		if key == "url ":
@@ -165,11 +169,26 @@ def spiderMain(fileData):
 					print("##抓取成功##\n")
 					htmlHeaders = spiderResult.headers
 					textWeb = spiderResult.text
-def main():
-	# 工具载入
-	fileData = readFileLine(input("请输入子雨爬虫配置文件XXX.posp位置\n>>>"))
-	spiderMain(fileData)
 
-	input("\n回车退出")
-		
+		# 代码存在性检验
+		else:
+			print("!!!语法错误：此代码不存在!!!\n")
+			break
+
+	# 代码存在性检验
+	else:
+		print("!!!语法错误：此代码不存在!!!\n")
+		break
+
+def main():
+	while(ture):
+		print("请输入想要执行的操作\n")
+		print("操作如下:\n")
+		print("执行子雨爬虫配置文件----go\n")
+		print("通过交互式测试代码-----dos\n")
+		print("通过交互式编写代码----code\n")
+		fileData = readFileLine(input("请输入子雨爬虫配置文件XXX.posp位置\n>>>"))
+		spiderMain(fileData)	
+
+	input("\n回车退出")		
 main()
