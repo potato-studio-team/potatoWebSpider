@@ -1,6 +1,4 @@
-title=test
+title=My first spider
 url&get=http://www.potatost.xyz
-file&new=a.txt
-file&writeWord=lalala
-file&writeValue=headers
+file&new=result.html
 file&writeValue=textWeb
