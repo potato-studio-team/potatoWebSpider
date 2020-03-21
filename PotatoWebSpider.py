@@ -1,5 +1,6 @@
 import requests
 import re
+import os
 import json
 from bs4 import BeautifulSoup
 import datetime
@@ -21,9 +22,14 @@ def spiderRoot(url):
         return "Error"
 
 def readFileLine(place):
-	with open(place, encoding="utf-8") as f:
+	if os.path.exists(place):
+		with open(place, encoding="utf-8") as f:
 		content = f.readlines()
-	return content
+
+	else:
+		print("!!!启动错误：配置文件不存在!!!\n")
+		ls0 = ["none=none"]
+		return ls0
 
 def writeFileN(place,data):
 	data = str(data)
@@ -37,10 +43,7 @@ def writeFileA(place,data):
 	filehandle.write(data)
 	filehandle.close()
 
-
-def main():
-	fileData = readFileLine(input("请输入子雨爬虫配置文件XXX.posp位置\n>>>"))
-
+def spiderMain(fileData):
 	saveFileName = "none"
 	textWeb = "none"
 	url = "none"
@@ -51,6 +54,10 @@ def main():
 		key = re.search(r"^[a-z,A-z]+",root).group(0)
 		root = root.strip(key)
 
+		if root == "=none":
+			print("?配置文件为空?\n")
+			break
+
 # 标题----------------------------------------------------------------------
 
 		if key == "title":
@@ -59,10 +66,10 @@ def main():
 
 # 文件处理------------------------------------------------------------------
 
-		elif key == "file":
+		if key == "file":
 			root = root.strip("&")
 			key = re.search(r"^[a-z,A-z]+",root).group(0)
-			root = root.strip(key).strip("\n").strip("=")
+			root = root.strip(key).strip("\n").strip("=").strip(" ")
 
 			if key == "new":
 				writeFileN(root,"")
@@ -70,7 +77,7 @@ def main():
 
 			elif key == "writeWord":
 				if saveFileName == "none":
-					print("!!!编译错误：文件还未创建，不可写入!!!")
+					print("!!!编译错误：文件还未创建，不可写入!!!\n")
 					break
 
 				else:
@@ -81,7 +88,7 @@ def main():
 				# 错误分析
 				if root == "time":
 					if saveFileName == "none":
-						print("!!!编译错误：文件还未创建，不可写入!!!")
+						print("!!!编译错误：文件还未创建，不可写入!!!\n")
 						break
 
 					else:
@@ -90,48 +97,48 @@ def main():
 	
 						today = today + "\n"
 						writeFileA("saveFileName",today)
-						print("##时间信息已写入##")
+						print("##时间信息已写入##\n")
 
 				# 写入访问头部信息
 				if root == "headers":
 					# 错误分析
 					if saveFileName == "none":
-						print("!!!编译错误：文件还未创建，不可写入!!!")
+						print("!!!编译错误：文件还未创建，不可写入!!!\n")
 						break
 
 					elif htmlHeaders  == "none":
-						print("!!!编译错误：没有抓取，无法返回请求头信息!!!")
+						print("!!!编译错误：没有抓取，无法返回请求头信息!!!\n")
 						break
 
 					else:
 						headers = str(htmlHeaders) + "\n"
 						writeFileA(saveFileName,headers)
-						print("##头部信息已写入##")
+						print("##头部信息已写入##\n")
 
 				# 直接写入html
 				if root == "textWeb":
 					# 错误分析
 					if saveFileName == "none":
-						print("!!!编译错误：文件还未创建，不可写入!!!")
+						print("!!!编译错误：文件还未创建，不可写入!!!\n")
 						break
 
 					elif textWeb == "none":
-						print("!!!编译错误：没有抓取，不可写入!!!")
+						print("!!!编译错误：没有抓取，不可写入!!!\n")
 						break
 
 					else:
 						html = "\n本次爬取的网站内容如下\n" + str(textWeb) + "\n"
 						writeFileA(saveFileName,textWeb)
-						print("##网站抓取内容信息已写入##")
+						print("##网站抓取内容信息已写入##\n")
 
 				# 写入处理结果
 				if root == "result":
 					if saveFileName == "none":
-						print("!!!编译错误：文件还未创建，不可写入!!!")
+						print("!!!编译错误：文件还未创建，不可写入!!!\n")
 						break
 
 					elif result == "none":
-						print("!!!编译错误：没有信息被处理，不可写入!!!")
+						print("!!!编译错误：没有信息被处理，不可写入!!!\n")
 						break
 
 					else:
@@ -139,7 +146,7 @@ def main():
 
 # 爬虫核心处理---------------------------------------------------------------
 
-		elif key == "url":
+		if key == "url ":
 			root = root.strip("&")
 			key = re.search(r"^[a-z,A-z]+",root).group(0)
 			root = root.strip(key).strip("=").strip("\n")
@@ -158,7 +165,10 @@ def main():
 					print("##抓取成功##\n")
 					htmlHeaders = spiderResult.headers
 					textWeb = spiderResult.text
-
+def main():
+	# 工具载入
+	fileData = readFileLine(input("请输入子雨爬虫配置文件XXX.posp位置\n>>>"))
+	spiderMain(fileData)
 
 	input("\n回车退出")
 		
