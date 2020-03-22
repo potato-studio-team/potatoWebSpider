@@ -198,12 +198,11 @@ def dosTest():
 	print("请输入代码,输入exit()退出\n")
 	code = [""]
 	while(1):
-		code = input("\n>>>")
+		code[0] = input("\n>>>")
 		if code[0] == "exit()":
 			break
 
 		else:
-			print(code)
 			spiderMain(code)
 
 def main():
