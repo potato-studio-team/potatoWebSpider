@@ -198,10 +198,21 @@ def dosTest():
 	print("请输入代码,输入exit()退出\n")
 	while(1):
 		code = input("\n>>>")
-
 		if code == "exit()":
-			
-		spiderMain(code)
+			break
+
+		else:	
+			spiderMain(code)
+
+def dosCode():
+	print("请输入代码,输入exit()退出,del()删除上一行\n")
+	while(1):
+		code = input("\n>>>")
+		if code == "exit()":
+			break
+
+		else:	
+			spiderMain(code)
 
 
 def main():
@@ -226,10 +237,10 @@ def main():
 			spiderMain(fileData)	
 
 		elif check == "dos":
-			print(1)
+			dosTest()
 
 		elif check == "code":
-			print(1)
+			dosCode()
 
 		elif check == "exit":
 			break
