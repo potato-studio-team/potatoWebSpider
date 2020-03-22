@@ -1,6 +1,6 @@
 #####################PotatoWebSpider######################
 #---------------欢迎使用子雨网页爬虫制作工具----------------
-#-------------------www.potatost.xyz----------------------
+#-------------------www.potatost.xyz---------------------
 #-------------打开potatoSpiderDoc查看开发文档--------------
 #--------------------编写PotatoStudio---------------------
 #---------------联系potatostuser@163.com------------------
@@ -70,7 +70,8 @@ def spiderMain(fileData):
 # 标题----------------------------------------------------------------------
 	
 		if key == "title":
-			root = root.strip(" ").strip("=").strip("\n")
+			root = root.replace("\n","")
+			root = root.replace("=","")
 			root = "\n" + root + "\n"
 			print(root)
 
@@ -78,9 +79,10 @@ def spiderMain(fileData):
 
 		elif key == "file":
 			root = root.strip("&").replace(" ", "")# 去除全部空格
-			key = re.search(r"^[a-z,A-z]+",root).group(0)
+			key = re.search(r"^[a-z,A-z]+",root).group(0).replace(" ","")
 			key = str(key).strip(" ")
-			root = root.strip(key).strip("\n").strip("=").strip(" ")
+			root = root.strip(key).strip("\n")
+			root = root.replace("=","")
 
 			if key == "new":
 				writeFileN(root,"")
@@ -164,7 +166,8 @@ def spiderMain(fileData):
 		elif key == "url":
 			root = root.strip("&")
 			key = re.search(r"^[a-z,A-z]+",root).group(0)
-			root = root.strip(key).strip("=").strip("\n").replace(" ", "")# 去除全部空格
+			root = root.strip(key).strip("\n").replace(" ", "")# 去除全部空格
+			root = root.replace("=","")
 
 			if key == "get":
 				url = root
@@ -183,12 +186,12 @@ def spiderMain(fileData):
 
 			# 代码存在性检验
 			else:
-				print("!!!语法错误：此代码不存在!!!\n")
+				print("!!!语法错误：此代码不存在!!!" + key + "\n")
 				break
 
 		# 代码存在性检验
 		else:
-			print("!!!语法错误：此代码不存在!!!\n")
+			print("!!!语法错误：此代码不存在!!!" + key + "\n")
 			break
 
 def main():
@@ -202,10 +205,10 @@ def main():
 	while(1):
 		print("\n\n\n请输入想要执行的操作\n")
 		print("操作如下:\n")
-		print("执行子雨爬虫配置文件----go")
-		print("通过交互式测试代码-----dos")
-		print("通过交互式编写代码----code")
-		print("退出------------------exit")
+		print("执行子雨爬虫配置文件----go\n")
+		print("通过交互式测试代码-----dos\n")
+		print("通过交互式编写代码----code\n")
+		print("退出------------------exit\n")
 		check = input(">>>")
 
 		if check == "go":
