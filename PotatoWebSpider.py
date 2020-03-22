@@ -1,7 +1,15 @@
+#####################PotatoWebSpider######################
+#---------------欢迎使用子雨网页爬虫制作工具----------------
+#-------------------www.potatost.xyz----------------------
+#-------------打开potatoSpiderDoc查看开发文档--------------
+#--------------------编写PotatoStudio---------------------
+#---------------联系potatostuser@163.com------------------
+####################PotatoWebSpider#######################
+
 import requests
 import re
 import os
-import json
+import time
 from bs4 import BeautifulSoup
 import datetime
 
@@ -61,16 +69,17 @@ def spiderMain(fileData):
 
 # 标题----------------------------------------------------------------------
 	
-		print(key)
 		if key == "title":
-			root = root.strip("=").strip("\n")
+			root = root.strip(" ").strip("=").strip("\n")
 			root = "\n" + root + "\n"
+			print(root)
 
 # 文件处理------------------------------------------------------------------
 
-		if key == "file":
-			root = root.strip("&")
+		elif key == "file":
+			root = root.strip("&").replace(" ", "")# 去除全部空格
 			key = re.search(r"^[a-z,A-z]+",root).group(0)
+			key = str(key).strip(" ")
 			root = root.strip(key).strip("\n").strip("=").strip(" ")
 
 			if key == "new":
@@ -101,7 +110,7 @@ def spiderMain(fileData):
 						print("##时间信息已写入##\n")
 
 				# 写入访问头部信息
-				if root == "headers":
+				elif root == "headers":
 					# 错误分析
 					if saveFileName == "none":
 						print("!!!编译错误：文件还未创建，不可写入!!!\n")
@@ -117,7 +126,7 @@ def spiderMain(fileData):
 						print("##头部信息已写入##\n")
 
 				# 直接写入html
-				if root == "textWeb":
+				elif root == "textWeb":
 					# 错误分析
 					if saveFileName == "none":
 						print("!!!编译错误：文件还未创建，不可写入!!!\n")
@@ -133,7 +142,7 @@ def spiderMain(fileData):
 						print("##网站抓取内容信息已写入##\n")
 
 				# 写入处理结果
-				if root == "result":
+				elif root == "result":
 					if saveFileName == "none":
 						print("!!!编译错误：文件还未创建，不可写入!!!\n")
 						break
@@ -147,15 +156,15 @@ def spiderMain(fileData):
 
 				# 参数存在性判断
 				else:
-					print("!!!语法错误：此参数不存在!!!\n")
+					print("!!!语法错误：此参数不存在!!!" + root + "\n")
 					break
 
 # 爬虫核心处理---------------------------------------------------------------
 
-		if key == "url ":
+		elif key == "url":
 			root = root.strip("&")
 			key = re.search(r"^[a-z,A-z]+",root).group(0)
-			root = root.strip(key).strip("=").strip("\n")
+			root = root.strip(key).strip("=").strip("\n").replace(" ", "")# 去除全部空格
 
 			if key == "get":
 				url = root
@@ -178,21 +187,29 @@ def spiderMain(fileData):
 				break
 
 		# 代码存在性检验
-		# else:
-		# 	print("!!!语法错误：此代码不存在!!!\n")
-		# 	break
+		else:
+			print("!!!语法错误：此代码不存在!!!\n")
+			break
 
 def main():
+	print("#####################PotatoWebSpider######################")
+	print("#---------------欢迎使用子雨网页爬虫制作工具-------------#")
+	print("#-------------------www.potatost.xyz---------------------#")
+	print("#-------------打开potatoSpiderDoc查看开发文档------------#")
+	print("#--------------------编写PotatoStudio--------------------#")
+	print("#---------------联系potatostuser@163.com-----------------#")
+	print("####################PotatoWebSpider#######################")
 	while(1):
-		print("请输入想要执行的操作\n")
+		print("\n\n\n请输入想要执行的操作\n")
 		print("操作如下:\n")
-		print("执行子雨爬虫配置文件----go\n")
-		print("通过交互式测试代码-----dos\n")
-		print("通过交互式编写代码----code\n")
+		print("执行子雨爬虫配置文件----go")
+		print("通过交互式测试代码-----dos")
+		print("通过交互式编写代码----code")
+		print("退出------------------exit")
 		check = input(">>>")
 
 		if check == "go":
-			fileData = readFileLine(input("请输入子雨爬虫配置文件XXX.posp位置\n>>>"))
+			fileData = readFileLine(input("\n\n\n请输入子雨爬虫配置文件XXX.posp位置\n>>>"))
 			spiderMain(fileData)	
 
 		elif check == "dos":
@@ -201,9 +218,10 @@ def main():
 		elif check == "code":
 			print(1)
 
-		else:
-			print("\n请输入正确的操作代码")
+		elif check == "exit":
 			break
+
+		else:
+			print("\n请输入正确的操作代码")	
 		
-	input("\n回车退出")		
 main()
