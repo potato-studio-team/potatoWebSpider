@@ -17,7 +17,7 @@ file&new=result.txt
 file&writeValue=textWeb
 ```
 
-新建一个文件，随意命名为<u>**test.posp**</u>将上面这部分代码写入，保存文件，打开工具，输入go ，再输入你创建文件的路径。比如:E:\\\test.posp，点击回车。结果如下:
+新建一个文件，随意命名为<u>**test.posp**</u>将上面这部分代码写入(**请使用utf-8编码**)，保存文件，打开工具，输入go ，再输入你创建文件的路径。比如:E:\\\test.posp，点击回车。结果如下:
 
 ```psop
 请输入子雨爬虫配置文件XXX.posp位置
@@ -32,7 +32,7 @@ My first spider
 
 #### posp语言介绍
 
-posp是PotatoStudio开发的本工具中工具调用的表达语言，所有的爬虫工具调用都要使用posp语言表达。语言格式如下：
+**Po**tato**Sp**ider是PotatoStudio开发的本工具中工具调用的表达语言，所有的爬虫工具调用都要使用posp语言表达。语言格式如下：
 
 **key=value**(key = 键--工具代码; value = 值--参数)
 `file&new=E:\\hello.posp` (调用file包的new工具，在E盘创建子雨网页爬虫配置文件hello.posp)
@@ -46,14 +46,31 @@ posp是PotatoStudio开发的本工具中工具调用的表达语言，所有的�
 ### 一、文字展示
 
 ```posp
-title=[文字]------显示一段[文字]
+title=[text]------显示一段[text]
 ```
 
 ### 二、爬虫基本操作
 
 #### 1.爬虫获取网页
 
-```
+```posp
 url&get=[url]------抓取[url]
 ```
 
+### 一、文件的操作
+
+#### 1.创建文件
+
+```posp
+file&new=[filePlace+fileName]------在[filePlace]位置创建文件[fileName]
+
+比如要在E盘创建potsto.txt文件代码应该为：
+file&new=E://potsto.txt
+!!!应该注意!!!，如果您在C盘中系统文件夹或根目录创建文件，很可能因为没有管理员权限而失败。
+```
+
+#### 2.给文件写入值(请在此操作之前先创建文件)
+
+```posp
+
+```
