@@ -17,4 +17,4 @@ file&new=result.html
 file&writeValue=textWeb
 ```
 
-新建一个文件，命名为[随便].posp
+新建一个文件，随意命名为<u>**test.posp**</u>将上面这部分代码写入，保存文件，打开工具
