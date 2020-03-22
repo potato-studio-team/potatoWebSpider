@@ -196,24 +196,15 @@ def spiderMain(fileData):
 
 def dosTest():
 	print("请输入代码,输入exit()退出\n")
+	code = [""]
 	while(1):
 		code = input("\n>>>")
-		if code == "exit()":
+		if code[0] == "exit()":
 			break
 
-		else:	
+		else:
+			print(code)
 			spiderMain(code)
-
-def dosCode():
-	print("请输入代码,输入exit()退出,del()删除上一行\n")
-	while(1):
-		code = input("\n>>>")
-		if code == "exit()":
-			break
-
-		else:	
-			spiderMain(code)
-
 
 def main():
 	print("#####################PotatoWebSpider######################")
@@ -228,7 +219,6 @@ def main():
 		print("操作如下:\n")
 		print("执行子雨爬虫配置文件----go\n")
 		print("通过交互式测试代码-----dos\n")
-		print("通过交互式编写代码----code\n")
 		print("退出------------------exit\n")
 		check = input(">>>")
 
@@ -238,9 +228,6 @@ def main():
 
 		elif check == "dos":
 			dosTest()
-
-		elif check == "code":
-			dosCode()
 
 		elif check == "exit":
 			break
