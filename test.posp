@@ -1,4 +1,4 @@
-title = My first spider
-url&get = http://www.potatost.xyz
-file&new = result.html
-file&writeValue = textWeb
+title=My first spider
+url&get=http://www.potatost.xyz
+file&new=result.html
+file&writeValue=textWeb
