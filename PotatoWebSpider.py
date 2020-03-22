@@ -194,6 +194,16 @@ def spiderMain(fileData):
 			print("!!!语法错误：此代码不存在!!!" + key + "\n")
 			break
 
+def dosTest():
+	print("请输入代码,输入exit()退出\n")
+	while(1):
+		code = input("\n>>>")
+
+		if code == "exit()":
+			
+		spiderMain(code)
+
+
 def main():
 	print("#####################PotatoWebSpider######################")
 	print("#---------------欢迎使用子雨网页爬虫制作工具-------------#")
