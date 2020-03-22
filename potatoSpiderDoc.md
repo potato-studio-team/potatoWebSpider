@@ -10,11 +10,11 @@
 
 子雨网页爬虫工具是一个主要使用python语言编写的面相于对计算机感兴趣的普通用户和入门程序员编写和测试简单地网站网页爬虫。此工具你可能只需要一两行代码类似
 
-> title=My first spider
->
-> url&get=http://www.potatost.xyz
->
-> file&new=result.html
->
-> file&writeValue=textWeb
+```posp
+title=My first spider
+url&get=http://www.potatost.xyz
+file&new=result.html
+file&writeValue=textWeb
+```
 
+新建一个文件，命名为[随便].posp
