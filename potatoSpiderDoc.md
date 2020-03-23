@@ -1,6 +1,10 @@
-# PotatoWebSpider应用开发文档
+# Potato Web Spider 应用开发文档 1.1.0
 
-## [PotatoStudio](www.potatost.xyz)
+![798253](http://doc.potatost.xyz/PotatoWebSpider/data/images/798253.png)
+
+## [进入网站](https://www.potatost.xyz/index.php/potato-spider/)
+
+### 工具和本文档均由[Potato Studio](https://www.potatost.xyz/)制作 
 
 ### 欢迎使用子雨网页爬虫制作工具
 
@@ -8,7 +12,7 @@
 
 #### 工具的介绍
 
-子雨网页爬虫工具是一个主要使用python语言编写的面相于对计算机感兴趣的普通用户和入门程序员编写和测试简单地网站网页爬虫。此工具是一个工具集，可以使用特定的代码调用并执行，类似:
+子雨网页爬虫工具是一个Potato Studio主要使用python语言编写的面相于对计算机感兴趣的普通用户和入门程序员编写和测试简单地网站网页爬虫。此工具是一个工具集，可以使用特定的代码调用并执行，类似:
 
 ```posp
 title=My first spider
@@ -17,7 +21,7 @@ file&new=result.txt
 file&writeValue=textWeb
 ```
 
-新建一个文件，随意命名为<u>**test.posp**</u>将上面这部分代码写入(**请使用utf-8编码**)，保存文件，打开工具，输入go ，再输入你创建文件的路径。比如:E:\\\test.posp，点击回车。结果如下:
+新建一个文件，随意命名为test.posp将上面这部分代码写入(请使用utf-8编码)，保存文件，打开工具，输入go ，再输入你创建文件的路径。比如:E:\\test.posp，点击回车。结果如下:
 
 ```psop
 请输入子雨爬虫配置文件XXX.posp位置
@@ -32,7 +36,7 @@ My first spider
 
 #### posp语言介绍
 
-**Po**tato**Sp**ider是PotatoStudio开发的本工具中工具调用的表达语言，所有的爬虫工具调用都要使用posp语言表达。语言格式如下：
+**Po**tato **Sp**ider 是 Potato Studio 开发的本工具中工具调用的表达语言，所有的爬虫工具调用都要使用posp语言表达。语言格式如下：
 
 **key=value**(key = 键--工具代码; value = 值--参数)
 `file&new=E:\\hello.posp` (调用file包的new工具，在E盘创建子雨网页爬虫配置文件hello.posp)
@@ -43,7 +47,9 @@ My first spider
 
 ## posp代码说明：
 
-注：[ ]里的是数据类型，实际写代码的时候没有[ ]
+**此处列出所有可以调用的工具和如何书写使用工具的代码**
+
+**注：[ ]里的是数据类型，实际写代码的时候没有[ ]**
 
 ### 一、文字展示
 
@@ -52,6 +58,8 @@ title=[text]------显示一段[text]
 
 title=hello(在控制台显示hello)
 ```
+
+
 
 ### 二、爬虫基本操作
 
@@ -62,6 +70,8 @@ url&get=[url]------抓取[url]
 
 url&get=http://www.potatost.xyz(抓取http://www.potatost.xyz网站)
 ```
+
+
 
 ### 一、文件的操作
 
@@ -75,8 +85,6 @@ url&get=http://www.potatost.xyz(抓取http://www.potatost.xyz网站)
 文件2操作A
 ...
 ```
-
-
 
 #### 1.创建文件
 
@@ -122,3 +130,8 @@ file&writeValue=textWeb(在文件中写入抓取网站的主体信息)
 |  textWeb   |     通过调用url&get或其他爬取工具获得      |
 | ~~result~~ | ~~通过一系列数据处理后的结果**(待更新)**~~ |
 
+## The End ......
+
+**感谢您使用 Potato Web Spider 工具，我们会继续更新工具，你可以通过 potatostuser@163.com 来联系我们，再次感谢您的使用**
+
+# ^-^
