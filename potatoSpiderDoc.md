@@ -1,10 +1,10 @@
 # PotatoWebSpider应用开发文档
 
-## PotatoStudio
+## [PotatoStudio](www.potatost.xyz)
 
 ### 欢迎使用子雨网页爬虫制作工具
 
-
+本文档将教会你怎么使用这个工具，并展示工具的代码以方便开发者开发。前往官网可以获得以编写好的爬虫，可供使用者们使用和开发
 
 #### 工具的介绍
 
@@ -37,6 +37,8 @@ My first spider
 **key=value**(key = 键--工具代码; value = 值--参数)
 `file&new=E:\\hello.posp` (调用file包的new工具，在E盘创建子雨网页爬虫配置文件hello.posp)
 
+**!!!需要注意：前一行与后一行之间不要有空行，也不要有其他字符**
+
 
 
 ## posp代码说明：
@@ -47,6 +49,8 @@ My first spider
 
 ```posp
 title=[text]------显示一段[text]
+
+title=hello(在控制台显示hello)
 ```
 
 ### 二、爬虫基本操作
@@ -55,9 +59,24 @@ title=[text]------显示一段[text]
 
 ```posp
 url&get=[url]------抓取[url]
+
+url&get=http://www.potatost.xyz(抓取http://www.potatost.xyz网站)
 ```
 
 ### 一、文件的操作
+
+**!!!需要注意：使用文件前必须创建文件，在前一文件使用结束之前不能创建新的文件**
+
+```posp
+文件1创建：-----
+文件1操作A
+文件1操作B
+文件2创建：-----
+文件2操作A
+...
+```
+
+
 
 #### 1.创建文件
 
@@ -66,11 +85,40 @@ file&new=[filePlace+fileName]------在[filePlace]位置创建文件[fileName]
 
 比如要在E盘创建potsto.txt文件代码应该为：
 file&new=E://potsto.txt
-!!!应该注意!!!，如果您在C盘中系统文件夹或根目录创建文件，很可能因为没有管理员权限而失败。
+!!!温馨提示，如果您在C盘中系统文件夹或根目录创建文件，很可能因为没有管理员权限而失败。
 ```
 
-#### 2.给文件写入值(请在此操作之前先创建文件)
+#### 2.给文件写入一段文字(请在此操作之前先创建文件)
 
 ```posp
+file&writeWord=[text]------将一段[text]写入文件
+
+file&writeWord=potato(在文件中写入potato)
+```
+
+#### 3.给文件写入一个数据(请在此操作之前先创建文件)
 
 ```
+file&writeValue=[value]------将特定的数据[value]写入文件
+
+file&writeValue=textWeb(在文件中写入抓取网站的主体信息)
+```
+
+##### 			(1)以下是[value]的数据和其意义表:
+
+|   value    |        意义        |               备注/用法                |
+| :--------: | :----------------: | :------------------------------------: |
+|    time    |    时间：年月日    |          file&writeValue=time          |
+|  hearders  |       访问头       |  file&writeValue=hearders**(先抓取)**  |
+|  textWeb   | 抓取网站的主体信息 |  file&writeValue=textWeb**(先抓取)**   |
+| ~~result~~ |  ~~计算分析结果~~  | ~~file&writeValue=result**(待更新)**~~ |
+
+##### 			(2)数据来源说明表:
+
+|   value    |                  信息来源                  |
+| :--------: | :----------------------------------------: |
+|    time    |               计算机内置时间               |
+|  hearders  |     通过调用url&get或其他爬取工具获得      |
+|  textWeb   |     通过调用url&get或其他爬取工具获得      |
+| ~~result~~ | ~~通过一系列数据处理后的结果**(待更新)**~~ |
+
