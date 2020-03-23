@@ -63,9 +63,15 @@ def spiderMain(fileData):
 		key = re.search(r"^[a-z,A-z]+",root).group(0)
 		root = root.strip(key)
 
+# 错误判断，注释空行判断-----------------------------------------------------
+
 		if root == "=none":
 			print("?配置文件为空?\n")
 			break
+
+		# print(root[0:1])
+		# if root[0:1] == "#":
+		# 	root = "goOut"
 
 # 标题----------------------------------------------------------------------
 	
@@ -156,6 +162,7 @@ def spiderMain(fileData):
 					else:
 						writeFileA("saveFileName",result)
 
+
 				# 参数存在性判断
 				else:
 					print("!!!语法错误：此参数不存在!!!" + root + "\n")
@@ -189,6 +196,10 @@ def spiderMain(fileData):
 				print("!!!语法错误：此代码不存在!!!" + key + "\n")
 				break
 
+		# 注释排除
+		elif key == "goOut":
+			key = " "
+		
 		# 代码存在性检验
 		else:
 			print("!!!语法错误：此代码不存在!!!" + key + "\n")
