@@ -1,0 +1,5 @@
+查看开发文档：
+https://www.potatost.xyz/index.php/potato-spider/
+查看官网：
+https://www.potatost.xyz/
+或打开根目录的文件：PotatoSpiderDoc.pdf
