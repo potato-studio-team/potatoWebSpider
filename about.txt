@@ -1,10 +1,10 @@
-以下是关于PotatoWebSpider的一些协议和告知
+�����ǹ���PotatoWebSpider��һЩЭ��͸�֪
 
-1. PotatoWebSpider是由PotatoStudio开发的，我们允许您使用我们开源的代码供自己使用，但在未经许可的情况下，禁止将其发布，或进行商业目的
-2. PotatoWebSpider是由python开发的，其开发过程中所有工具都已取得其正版授权。
-3. PotatoStudio为非商业目的工作室，因此不为您的使用提供保障。
-4. 网页爬虫爬取信息时，PotatoStudio建议，但不要求您遵守地方法律法规，并遵守robots协议。您使用造成的后果，PotatoStudio概不负责。
-5. PotatoWebSpider为学习交流和便携生活使用，如果投入商业使用，应告知我们。我们不建议您投入商业，因为工具的稳定性不足以提供商业使用。
-6. 任何问题，欢迎发邮件到 potatostuser@163.com
+1. PotatoWebSpider����PotatoStudio�����ģ�����������ʹ�����ǿ�Դ�Ĵ��빩�Լ�ʹ�ã�����δ�����ɵ�����£���ֹ���䷢�����������ҵĿ��
+2. PotatoWebSpider����python�����ģ��俪�����������й��߶���ȡ����������Ȩ��
+3. PotatoStudioΪ����ҵĿ�Ĺ����ң���˲�Ϊ����ʹ���ṩ���ϡ�
+4. ��ҳ������ȡ��Ϣʱ��PotatoStudio���飬����Ҫ�������صط����ɷ��棬������robotsЭ�顣��ʹ����ɵĺ����PotatoStudio�Ų�����
+5. PotatoWebSpiderΪѧϰ�����ͱ�Я����ʹ�ã����Ͷ����ҵʹ�ã�Ӧ��֪���ǡ����ǲ�������Ͷ����ҵ����Ϊ���ߵ��ȶ��Բ������ṩ��ҵʹ�á�
+6. �κ����⣬��ӭ���ʼ��� potatostuser@163.com
 
-------子雨 PotatoStudio团队敬上
+------���� PotatoStudio�ŶӾ���
